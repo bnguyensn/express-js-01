@@ -32,27 +32,34 @@ async function add(req, res) {
   let sum;
   if (Array.isArray(n)) {
     sum = n.reduce((acc, cur) => {
-      const num = Number(cur);
-
-      if (!Number.isNaN(num)) {
-        acc += num;
-      }
-
-      return acc;
+      return acc + queryParamToNumber(cur);
     }, 0);
   } else {
-    const num = Number(n);
-
-    if (!Number.isNaN(num)) {
-      sum = num;
-    } else {
-      sum = 0;
-    }
+    sum = queryParamToNumber(n);
   }
 
   return res.json({
     sum,
   });
+}
+
+/**
+ * Convert a query parameter to a number if it's convertible to number, or 0 if
+ * not.
+ *
+ * @param {any} queryParam - Query parameter coming straight from req.query;
+ *
+ * @return {number} - The query parameter, converted to a number, or 0 if it's
+ * not convertible to a number
+ */
+function queryParamToNumber(queryParam) {
+  const num = Number(queryParam);
+
+  if (!Number.isNaN(num)) {
+    return num;
+  }
+
+  return 0;
 }
 
 export { getMathRoutes };
