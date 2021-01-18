@@ -8,9 +8,9 @@ There are 2 environment variables: `NODE_ENV` and `PORT`. If omitted, running `n
 
 ### Commands
 
-`npm start`: start the project. If `NODE_ENV` is set as `production` then will look for the entry point in the `dist` directory, else will run `nodemon`.
+`npm start`: start the project. If `NODE_ENV` is set as `production` then will look for the entry point in the `dist` directory (generated via `npm run build`, else will run `nodemon`.
 
-`npm build`: build the project using Babel. Babel allows us to write modern JavaScript syntax in the Node.js environment, the most notable of which is the `import`/`export` syntax in place of the usual `require`.
+`npm build`: build the project using Babel and output the results to a folder called `dist`. Babel allows us to write modern JavaScript syntax in the Node.js environment, the most notable of which is the `import`/`export` syntax in place of the usual `require`.
 
 ### API (Routes)
 
